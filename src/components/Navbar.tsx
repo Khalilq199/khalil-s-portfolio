@@ -58,9 +58,14 @@ const Navbar = () => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-lg font-semibold text-foreground hover:text-primary transition-colors"
           >
-            KAQ
+            <img
+              src="/KAQ_logo_256x256.png"
+              alt="KAQ logo"
+              className="h-6 w-6"
+            />
+            <span>KAQ</span>
           </a>
 
           {/* Desktop Navigation */}
