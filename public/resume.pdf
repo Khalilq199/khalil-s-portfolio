@@ -1,0 +1,75 @@
+KHALIL AHMAD QAMAR
+Mechatronics Engineering | University of Waterloo
+Email: khalil.qamar@example.com | Phone: +1 (555) 123-4567
+LinkedIn: linkedin.com/in/khalilqamar | GitHub: github.com/khalilqamar
+
+================================================================================
+EDUCATION
+================================================================================
+University of Waterloo
+Bachelor of Applied Science in Mechatronics Engineering
+Expected Graduation: 2026
+
+================================================================================
+EXPERIENCE
+================================================================================
+
+AI/ML Research Intern | Tech Research Lab
+May 2024 – Aug 2024
+• Developed computer vision models achieving 95% accuracy on medical imaging datasets
+• Built end-to-end ML pipelines processing 10K+ images daily
+• Collaborated with cross-functional teams to deploy models to production
+• Implemented data augmentation strategies reducing training time by 40%
+• Published internal research paper on novel preprocessing techniques
+Technologies: Python, TensorFlow, OpenCV, AWS, Docker
+
+Full-Stack Software Developer | HealthTech Startup
+Jan 2024 – Apr 2024
+• Built patient management system serving 5,000+ active users
+• Designed RESTful APIs handling 100K+ requests per day
+• Reduced page load times by 60% through optimization
+• Implemented real-time notifications using WebSocket connections
+• Led migration from legacy system with zero downtime
+Technologies: React, Node.js, PostgreSQL, Redis, TypeScript
+
+Computer Vision Engineer Intern | Robotics Company
+Sep 2023 – Dec 2023
+• Developed object detection system for autonomous navigation
+• Optimized inference speed from 15fps to 45fps on edge devices
+• Created synthetic data generation pipeline for training
+• Integrated depth sensing with RGB cameras for 3D reconstruction
+• Documented codebase and trained junior team members
+Technologies: Python, PyTorch, ROS, C++, CUDA
+
+================================================================================
+PROJECTS
+================================================================================
+
+AI Medical Image Analyzer
+• Deep learning system for early disease detection in X-rays
+• Built CNN-based system achieving 94% accuracy for pre-screening
+• Reduced initial screening time by 70% in pilot hospital
+Technologies: Python, TensorFlow, FastAPI, React, Docker
+
+Real-Time Object Tracker
+• Computer vision system for autonomous drone navigation
+• Achieved 45fps tracking on embedded hardware with 98% object retention
+Technologies: Python, PyTorch, OpenCV, C++, ROS
+
+HealthSync Platform
+• Full-stack patient management system for clinics
+• Deployed to 3 clinics serving 2,000+ patients with 99.9% uptime
+Technologies: React, Node.js, PostgreSQL, Redis, AWS
+
+================================================================================
+SKILLS
+================================================================================
+
+Languages: Python, TypeScript, JavaScript, C++, Java, SQL, Go
+Frameworks: React, Node.js, TensorFlow, PyTorch, FastAPI, Express, Next.js, OpenCV
+Tools: AWS, Docker, Git, Linux, PostgreSQL, MongoDB, Redis, Kubernetes
+Domains: AI/ML, Computer Vision, Deep Learning, Full-Stack Development, Data Engineering
+
+================================================================================
+NOTE: Replace this placeholder with your actual resume PDF file
+================================================================================
