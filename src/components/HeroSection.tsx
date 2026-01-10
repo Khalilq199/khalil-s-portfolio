@@ -94,6 +94,14 @@ const HeroSection = () => {
             <Button
               variant="outline"
               size="lg"
+              onClick={() => scrollToSection("experience")}
+              className="gap-2"
+            >
+              View Experience
+            </Button>
+            <Button
+              variant="outline"
+              size="lg"
               onClick={() => scrollToSection("projects")}
               className="gap-2"
             >
@@ -114,7 +122,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <button
         onClick={() => scrollToSection("experience-strip")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground hover:text-primary transition-colors animate-bounce-soft"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full border border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 transition-all animate-bounce-soft"
         aria-label="Scroll to next section"
       >
         <ChevronDown className="h-8 w-8" />
