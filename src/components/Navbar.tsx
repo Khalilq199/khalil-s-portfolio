@@ -3,9 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Moon, Sun, Menu, X, FileText } from "lucide-react";
 
 const Navbar = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Set dark mode as default on mount
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,9 +83,10 @@ const Navbar = () => {
               size="icon"
               onClick={toggleTheme}
               className="rounded-full"
+              aria-label="Toggle theme"
             >
               {isDark ? (
-                <Sun className="h-5 w-5" />
+                <Sun className="h-5 w-5 text-yellow-400" />
               ) : (
                 <Moon className="h-5 w-5" />
               )}

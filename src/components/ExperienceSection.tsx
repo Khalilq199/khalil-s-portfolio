@@ -83,7 +83,7 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="py-20 bg-background">
+    <section id="experience" className="py-20 section-gradient">
       <div className="container mx-auto px-4 max-w-5xl">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
           Experience

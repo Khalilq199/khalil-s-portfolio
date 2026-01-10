@@ -6,7 +6,7 @@ const ResumeSection = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section id="resume" className="py-20 bg-muted/30">
+    <section id="resume" className="py-20 section-gradient-alt">
       <div className="container mx-auto px-4 max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
           Resume
