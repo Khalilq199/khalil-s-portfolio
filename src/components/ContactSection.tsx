@@ -11,7 +11,7 @@ const ContactSection = () => {
   // ===== END EDITABLE SECTION =====
 
   return (
-    <section id="contact" className="py-20 bg-background">
+    <section id="contact" className="py-20 section-gradient">
       <div className="container mx-auto px-4 max-w-4xl">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
           Get In Touch
