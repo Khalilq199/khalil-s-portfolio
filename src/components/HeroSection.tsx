@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, Phone, MapPin, GraduationCap, ChevronDown, FileText } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.png";
+import profilePhoto from "@/assets/profile_pic.jpg";
 
 const HeroSection = () => {
   const scrollToSection = (id: string) => {
@@ -33,8 +33,18 @@ const HeroSection = () => {
           </h1>
 
           {/* Sub-headline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed">
-            Mechatronics Engineering student at the University of Waterloo with hands-on experience in AI, computer vision, and full-stack systems through internships and research. Passionate about building, learning, and pushing technical boundaries.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            Mechatronics Engineering @ University of Waterloo 
+          </p>
+
+          {/* Sub-headline */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            AI, Computer Vision, Data, Python, Full-Stack 
+          </p>
+
+          {/* Sub-headline */}
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 leading-relaxed">
+            Driven to build and learn
           </p>
 
           {/* Quick Info Badges */}
@@ -52,15 +62,15 @@ const HeroSection = () => {
           {/* Contact Links */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             <a
-              href="mailto:khalil.qamar@example.com"
+              href="mailto:kaqamar@uwaterloo.ca"
               className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="h-4 w-4" />
-              <span className="hidden sm:inline">khalil.qamar@example.com</span>
+              <span className="hidden sm:inline">kaqamar@uwaterloo.ca</span>
               <span className="sm:hidden">Email</span>
             </a>
             <a
-              href="https://linkedin.com/in/khalilqamar"
+              href="https://www.linkedin.com/in/khalil-ahmad-qamar/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"

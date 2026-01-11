@@ -63,7 +63,7 @@ const Navbar = () => {
             <img
               src="/KAQ_logo_256x256.png"
               alt="KAQ logo"
-              className="h-6 w-6"
+              className="h-12 w-12"
             />
             <span>KAQ</span>
           </a>
