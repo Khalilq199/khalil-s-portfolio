@@ -1,8 +1,21 @@
 import { Button } from "@/components/ui/button";
-import { Mail, Linkedin, Github, Phone, MapPin, GraduationCap, ChevronDown, FileText } from "lucide-react";
+import { Mail, Linkedin, Github, Phone, MapPin, GraduationCap, ChevronDown, FileText, Copy, Check } from "lucide-react";
+import { useState } from "react";
 import profilePhoto from "@/assets/profile_pic.jpg";
 
 const HeroSection = () => {
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText("kaqamar@uwaterloo.ca");
+      setIsCopied(true);
+      window.setTimeout(() => setIsCopied(false), 1500);
+    } catch {
+      setIsCopied(false);
+    }
+  };
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -61,19 +74,30 @@ const HeroSection = () => {
 
           {/* Contact Links */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <a
-              href="mailto:kaqamar@uwaterloo.ca"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              className="flex items-center gap-2 px-4 py-2 text-sm text-foreground bg-card/70 border border-border rounded-full shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
+              aria-live="polite"
+              aria-label="Copy email address"
+              title="Click to copy email"
             >
+              <Copy className="h-4 w-4 text-muted-foreground" />
+              <span className="hidden sm:inline text-muted-foreground border border-muted-foreground/60 rounded-full px-2 py-0.5 leading-none">
+                {isCopied ? "Copied" : "Copy"}
+              </span>
               <Mail className="h-4 w-4" />
-              <span className="hidden sm:inline">kaqamar@uwaterloo.ca</span>
-              <span className="sm:hidden">Email</span>
-            </a>
+              <span className="hidden sm:inline">
+                {isCopied ? "Copied!" : "kaqamar@uwaterloo.ca"}
+              </span>
+              <span className="sm:hidden">{isCopied ? "Copied!" : "Email"}</span>
+              <span className="sr-only">{isCopied ? "Email copied" : "Click to copy email"}</span>
+            </button>
             <a
               href="https://www.linkedin.com/in/khalil-ahmad-qamar/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm text-foreground bg-card/70 border border-border rounded-full shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
             >
               <Linkedin className="h-4 w-4" />
               LinkedIn
@@ -82,7 +106,7 @@ const HeroSection = () => {
               href="https://github.com/Khalilq199"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm text-foreground bg-card/70 border border-border rounded-full shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
             >
               <Github className="h-4 w-4" />
               GitHub
