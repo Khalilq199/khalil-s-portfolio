@@ -89,7 +89,7 @@ const ExperienceSection = () => {
           Experience
         </h2>
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-          Building impactful software through internships and research
+          Impact through Internships and Research
         </p>
 
         <div className="space-y-6">

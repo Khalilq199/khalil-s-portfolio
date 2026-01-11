@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, Maximize2, X } from "lucide-react";
 
 const ResumeSection = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setIsExpanded(true);
+    window.addEventListener("openResumePreview", handleOpen);
+    return () => window.removeEventListener("openResumePreview", handleOpen);
+  }, []);
 
   return (
     <section id="resume" className="py-20 section-gradient-alt">
@@ -55,8 +61,14 @@ const ResumeSection = () => {
 
         {/* Expanded Modal */}
         {isExpanded && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/50 backdrop-blur-sm animate-fade-in">
-            <div className="relative bg-card rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/50 backdrop-blur-sm animate-fade-in"
+            onClick={() => setIsExpanded(false)}
+          >
+            <div
+              className="relative bg-card rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto"
+              onClick={(event) => event.stopPropagation()}
+            >
               <Button
                 variant="ghost"
                 size="icon"

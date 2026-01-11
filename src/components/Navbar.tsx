@@ -102,9 +102,15 @@ const Navbar = () => {
               size="sm"
               className="hidden sm:inline-flex gap-2"
             >
-              <a href="/resume.pdf" download>
+              <a
+                href="#resume"
+                onClick={() => {
+                  scrollToSection("#resume");
+                  window.dispatchEvent(new Event("openResumePreview"));
+                }}
+              >
                 <FileText className="h-4 w-4" />
-                Resume
+                View Resume
               </a>
             </Button>
 
@@ -138,9 +144,15 @@ const Navbar = () => {
                 </button>
               ))}
               <Button asChild className="mt-2 gap-2">
-                <a href="/resume.pdf" download>
+                <a
+                  href="#resume"
+                  onClick={() => {
+                    scrollToSection("#resume");
+                    window.dispatchEvent(new Event("openResumePreview"));
+                  }}
+                >
                   <FileText className="h-4 w-4" />
-                  Download Resume
+                  View Resume
                 </a>
               </Button>
             </div>

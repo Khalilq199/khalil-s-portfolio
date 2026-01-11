@@ -11,7 +11,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen hero-gradient flex flex-col items-center justify-center pt-16 pb-8 px-4">
+    <section className="relative min-h-screen hero-gradient flex flex-col items-center justify-center pt-16 pb-8 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="flex flex-col items-center text-center animate-fade-in-up">
           {/* Profile Photo */}
@@ -130,13 +130,16 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <button
-        onClick={() => scrollToSection("experience-strip")}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 p-3 rounded-full border border-primary/30 bg-primary/10 text-primary hover:bg-primary/20 transition-all animate-bounce-soft"
-        aria-label="Scroll to next section"
-      >
-        <ChevronDown className="h-8 w-8" />
-      </button>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <button
+          onClick={() => scrollToSection("experience-strip")}
+          className="scroll-cta flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-primary hover:bg-primary/20 transition-all"
+          aria-label="Scroll to next section"
+        >
+          <ChevronDown className="h-6 w-6" />
+          <span className="text-base font-medium leading-none">Scroll down</span>
+        </button>
+      </div>
     </section>
   );
 };

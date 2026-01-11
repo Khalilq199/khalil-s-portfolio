@@ -4,7 +4,7 @@ const ExperienceStrip = () => {
     "Internships",
     "Research",
     "AI + Computer Vision",
-    "Full-Stack Systems",
+    "Full-Stack",
     "Healthcare Impact",
   ];
   // ===== END EDITABLE SECTION =====

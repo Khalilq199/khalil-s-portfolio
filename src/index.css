@@ -63,6 +63,7 @@ All colors MUST be HSL.
     --chart-3: 280 40% 55%;
     --chart-4: 40 70% 55%;
     --chart-5: 350 60% 55%;
+
   }
 
   .dark {
@@ -135,6 +136,56 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  .scroll-cta {
+    position: relative;
+    overflow: hidden;
+    animation: scroll-cta-bounce 5.5s ease-in-out infinite;
+  }
+
+  .scroll-cta::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      hsl(var(--primary) / 0.25) 45%,
+      hsl(var(--primary) / 0.05) 60%,
+      transparent 75%
+    );
+    transform: translate(-60%, -60%);
+    animation: scroll-cta-shine 5.5s ease-in-out infinite;
+  }
+
+  @keyframes scroll-cta-shine {
+    0%,
+    70% {
+      transform: translate(-60%, -60%);
+    }
+    100% {
+      transform: translate(60%, 60%);
+    }
+  }
+
+  @keyframes scroll-cta-bounce {
+    0%,
+    70% {
+      transform: translateY(0);
+    }
+    78% {
+      transform: translateY(-6px);
+    }
+    86% {
+      transform: translateY(0);
+    }
+    92% {
+      transform: translateY(-3px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent;
   }
