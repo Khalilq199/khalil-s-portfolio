@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, Maximize2, X } from "lucide-react";
+import { Download, Maximize2, X } from "lucide-react";
 
 const ResumeSection = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -18,23 +18,12 @@ const ResumeSection = () => {
         <div className="bg-card border border-border rounded-lg overflow-hidden shadow-sm">
           {/* Resume Preview */}
           <div className="relative">
-            {/* Placeholder for resume preview - replace with actual PDF embed or image */}
-            <div className="aspect-[8.5/11] bg-secondary/50 flex flex-col items-center justify-center p-8 text-center">
-              <FileText className="h-16 w-16 text-muted-foreground mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">
-                Khalil Ahmad Qamar
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                Mechatronics Engineering | University of Waterloo
-              </p>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>• AI/ML Research Intern @ Tech Research Lab</p>
-                <p>• Full-Stack Developer @ HealthTech Startup</p>
-                <p>• Computer Vision Engineer @ Robotics Company</p>
-              </div>
-              <p className="mt-6 text-xs text-muted-foreground italic">
-                Click "Expand Preview" to view full resume or download PDF
-              </p>
+            <div className="aspect-[8.5/11] bg-secondary/50">
+              <iframe
+                title="Resume preview"
+                src="/resume.pdf#zoom=94"
+                className="h-full w-full"
+              />
             </div>
 
             {/* Expand button overlay */}
@@ -79,33 +68,12 @@ const ResumeSection = () => {
 
               {/* Full resume preview */}
               <div className="p-8">
-                <div className="aspect-[8.5/11] bg-secondary/30 flex flex-col items-center justify-center p-8 text-center rounded-lg">
-                  <FileText className="h-24 w-24 text-muted-foreground mb-6" />
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Khalil Ahmad Qamar
-                  </h3>
-                  <p className="text-lg text-muted-foreground mb-6">
-                    Mechatronics Engineering | University of Waterloo
-                  </p>
-                  <div className="space-y-3 text-muted-foreground text-left max-w-md">
-                    <div>
-                      <h4 className="font-semibold text-foreground">Experience</h4>
-                      <p>• AI/ML Research Intern @ Tech Research Lab</p>
-                      <p>• Full-Stack Developer @ HealthTech Startup</p>
-                      <p>• Computer Vision Engineer @ Robotics Company</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Education</h4>
-                      <p>• BASc Mechatronics Engineering, University of Waterloo</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">Skills</h4>
-                      <p>Python, TensorFlow, PyTorch, React, Node.js, AWS, Docker</p>
-                    </div>
-                  </div>
-                  <p className="mt-8 text-xs text-muted-foreground italic">
-                    Note: Replace this placeholder with your actual resume PDF
-                  </p>
+                <div className="aspect-[8.5/11] bg-secondary/30 rounded-lg overflow-hidden">
+                  <iframe
+                    title="Resume preview expanded"
+                    src="/resume.pdf#zoom=94"
+                    className="h-full w-full"
+                  />
                 </div>
 
                 <div className="mt-6 flex justify-center">

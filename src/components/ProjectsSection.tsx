@@ -30,7 +30,7 @@ const ProjectsSection = () => {
       solution: "Built a CNN-based system that pre-screens X-rays and highlights areas of concern with 94% accuracy",
       outcome: "Reduced initial screening time by 70% and improved early detection rates in pilot hospital",
       techStack: ["Python", "TensorFlow", "FastAPI", "React", "Docker"],
-      githubUrl: "https://github.com/khalilqamar/medical-ai",
+      githubUrl: "https://github.com/Khalilq199/medical-ai",
       demoUrl: "https://demo.example.com",
       substackUrl: "https://substack.com/@khalilqamar/process",
     },
@@ -43,7 +43,7 @@ const ProjectsSection = () => {
       solution: "Developed a hybrid tracking algorithm combining YOLO detection with Kalman filtering for prediction",
       outcome: "Achieved 45fps tracking on embedded hardware with 98% object retention rate",
       techStack: ["Python", "PyTorch", "OpenCV", "C++", "ROS"],
-      githubUrl: "https://github.com/khalilqamar/drone-tracker",
+      githubUrl: "https://github.com/Khalilq199/drone-tracker",
       demoUrl: "https://youtube.com/watch?v=demo",
     },
     {
@@ -55,7 +55,7 @@ const ProjectsSection = () => {
       solution: "Built a cloud-native platform with real-time scheduling, secure records, and analytics dashboard",
       outcome: "Deployed to 3 clinics serving 2,000+ patients with 99.9% uptime",
       techStack: ["React", "Node.js", "PostgreSQL", "Redis", "AWS"],
-      githubUrl: "https://github.com/khalilqamar/healthsync",
+      githubUrl: "https://github.com/Khalilq199/healthsync",
       substackUrl: "https://substack.com/@khalilqamar/healthsync",
     },
     // ===== DUPLICATE THIS BLOCK TO ADD ANOTHER PROJECT =====

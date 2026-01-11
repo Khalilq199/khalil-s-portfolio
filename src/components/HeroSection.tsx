@@ -79,7 +79,7 @@ const HeroSection = () => {
               LinkedIn
             </a>
             <a
-              href="https://github.com/khalilqamar"
+              href="https://github.com/Khalilq199"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -89,7 +89,7 @@ const HeroSection = () => {
             </a>
             <span className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
-              +1 (555) 123-4567
+              +1 (647) 913-6891
             </span>
           </div>
 

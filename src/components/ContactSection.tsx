@@ -3,10 +3,10 @@ import { Mail, Linkedin, Github, Phone } from "lucide-react";
 const ContactSection = () => {
   // ===== EDIT CONTACT INFO HERE =====
   const contactInfo = {
-    email: "khalil.qamar@example.com",
-    linkedin: "https://linkedin.com/in/khalilqamar",
-    github: "https://github.com/khalilqamar",
-    phone: "+1 (555) 123-4567",
+    email: "kaqamar@uwaterloo.ca",
+    linkedin: "https://www.linkedin.com/in/khalil-ahmad-qamar/",
+    github: "https://github.com/Khalilq199",
+    phone: "+1 (647) 913-6891",
   };
   // ===== END EDITABLE SECTION =====
 
