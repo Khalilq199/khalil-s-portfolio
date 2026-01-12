@@ -19,17 +19,24 @@ interface Project {
 const ProjectsSection = () => {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
+  const toBullets = (text: string) =>
+    text
+      .split(/\.\s+/)
+      .map((sentence) => sentence.trim())
+      .filter(Boolean)
+      .map((sentence) => (sentence.endsWith(".") ? sentence : `${sentence}.`));
+
   // ===== ADD NEW PROJECTS HERE =====
   const projects: Project[] = [
     {
       id: "proj-1",
       title: "PulseAI - Medical Diagnosis Assistant",
       tagline: "Deep learning system for early disease detection in X-rays",
-      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
-      problem: "Radiologists spend hours manually reviewing X-rays, leading to fatigue and missed diagnoses",
-      solution: "Built a CNN-based system that pre-screens X-rays and highlights areas of concern with 94% accuracy",
-      outcome: "Reduced initial screening time by 70% and improved early detection rates in pilot hospital",
-      techStack: ["Python", "TensorFlow", "FastAPI", "React", "Docker"],
+      image: "/coming_soon.png",
+      problem: "LLMs are unsafe for medical use when relying on internal knowledge due to hallucinations and lack of grounding. Keyword-based search fails to capture semantic meaning in complex medical queries.",
+      solution: "Built an end-to-end Retrieval-Augmented Generation (RAG) medical chatbot grounded in textbooks and clinical literature. Implemented a PDF ingestion and chunking pipeline, generated embeddings, and indexed them in Pinecone for semantic retrieval. Developed a Flask API with LangChain-based orchestration and deployed the system using Docker, AWS EC2, and GitHub Actions CI/CD.",
+      outcome: "Enabled evidence-grounded medical question answering using semantic retrieval rather than model recall. Delivered a fully deployed, production-style AI system with automated cloud deployment.",
+      techStack: ["Python", "LangChain", "Flask", "Pinecone", "Docker", "AWS (EC2, ECR)", "GitHub Actions", "LLMs", "Embedding Models"],
       githubUrl: "https://github.com/Khalilq199/medical-ai",
       demoUrl: "https://demo.example.com",
       substackUrl: "https://substack.com/@khalilqamar/process",
@@ -85,21 +92,33 @@ const ProjectsSection = () => {
         </div>
 
         <div className="space-y-6">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const isExpanded = expandedIds.has(project.id);
+            return (
             <div
               key={project.id}
-              className="bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
+              className={`bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 ${
+                isExpanded ? "md:max-w-[1100px] mx-auto" : ""
+              }`}
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
               <div className="flex flex-col md:flex-row">
                 {/* Project Image */}
-                <div className="relative md:w-72 lg:w-80 h-52 md:h-auto overflow-hidden bg-secondary/20">
+                <div
+                  className={`relative overflow-hidden bg-secondary/20 ${
+                    isExpanded
+                      ? "md:w-80 lg:w-96 h-56 md:h-60 lg:h-72"
+                      : "md:w-72 lg:w-80 h-52 md:h-52 lg:h-60"
+                  }`}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
+                      isExpanded ? "object-contain" : "object-cover"
+                    }`}
                   />
                 </div>
 
@@ -110,9 +129,6 @@ const ProjectsSection = () => {
                       <h3 className="text-2xl font-semibold text-card-foreground">
                         {project.title}
                       </h3>
-                      <p className="text-sm text-foreground/80 mt-1">
-                        {project.tagline}
-                      </p>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.slice(0, 3).map((tech) => (
@@ -126,29 +142,51 @@ const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  {/* Expanded Content */}
-                  {expandedIds.has(project.id) && (
-                    <div className="space-y-3 animate-fade-in">
-                      <div>
+                  <div className="space-y-3">
+                    {isExpanded && (
+                      <div className="animate-fade-in">
                         <span className="text-xs font-semibold text-primary uppercase tracking-wide">
                           Problem
                         </span>
-                        <p className="text-sm text-foreground/85">{project.problem}</p>
+                        <ul className="mt-2 space-y-2 text-sm text-foreground/85">
+                          {toBullets(project.problem).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <div>
-                        <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                          What I Built
-                        </span>
-                        <p className="text-sm text-foreground/85">{project.solution}</p>
-                      </div>
-                      <div>
+                    )}
+                    <div>
+                      <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                        What I Built
+                      </span>
+                      <ul className="mt-2 space-y-2 text-sm text-foreground/85">
+                        {toBullets(project.solution).map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    {isExpanded && (
+                      <div className="animate-fade-in">
                         <span className="text-xs font-semibold text-primary uppercase tracking-wide">
                           Outcome
                         </span>
-                        <p className="text-sm text-foreground/85">{project.outcome}</p>
+                        <ul className="mt-2 space-y-2 text-sm text-foreground/85">
+                          {toBullets(project.outcome).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
 
                   {/* Links */}
                   <div className="flex flex-wrap gap-2">
@@ -186,10 +224,10 @@ const ProjectsSection = () => {
                       onClick={() => toggleExpand(project.id)}
                       className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all"
                     >
-                      {expandedIds.has(project.id) ? (
-                        <>
-                          <ChevronUp className="h-4 w-4" />
-                          Show Less
+                    {isExpanded ? (
+                      <>
+                        <ChevronUp className="h-4 w-4" />
+                        Show Less
                         </>
                       ) : (
                         <>
@@ -202,7 +240,8 @@ const ProjectsSection = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
