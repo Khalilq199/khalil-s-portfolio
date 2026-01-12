@@ -17,13 +17,13 @@ interface Project {
 }
 
 const ProjectsSection = () => {
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   // ===== ADD NEW PROJECTS HERE =====
   const projects: Project[] = [
     {
       id: "proj-1",
-      title: "AI Medical Image Analyzer",
+      title: "PulseAI - Medical Diagnosis Assistant",
       tagline: "Deep learning system for early disease detection in X-rays",
       image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=400&fit=crop",
       problem: "Radiologists spend hours manually reviewing X-rays, leading to fatigue and missed diagnoses",
@@ -62,7 +62,15 @@ const ProjectsSection = () => {
   ];
 
   const toggleExpand = (id: string) => {
-    setExpandedId(expandedId === id ? null : id);
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
   };
 
   return (
@@ -75,77 +83,74 @@ const ProjectsSection = () => {
           Featured work showcasing AI, full-stack, and systems engineering
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-6">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col"
+              className="bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300"
               style={{
                 animationDelay: `${index * 100}ms`,
               }}
             >
-              {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-semibold text-card-foreground mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-foreground/80 mb-4">
-                  {project.tagline}
-                </p>
-
-                {/* Expanded Content */}
-                {expandedId === project.id && (
-                  <div className="space-y-3 mb-4 animate-fade-in">
-                    <div>
-                      <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                        Problem
-                      </span>
-                      <p className="text-sm text-foreground/85">{project.problem}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                        What I Built
-                      </span>
-                      <p className="text-sm text-foreground/85">{project.solution}</p>
-                    </div>
-                    <div>
-                      <span className="text-xs font-semibold text-primary uppercase tracking-wide">
-                        Outcome
-                      </span>
-                      <p className="text-sm text-foreground/85">{project.outcome}</p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.techStack.slice(0, expandedId === project.id ? undefined : 3).map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {!expandedId && project.techStack.length > 3 && (
-                    <span className="px-2 py-1 text-xs font-medium text-muted-foreground">
-                      +{project.techStack.length - 3}
-                    </span>
-                  )}
+              <div className="flex flex-col md:flex-row">
+                {/* Project Image */}
+                <div className="relative md:w-72 lg:w-80 h-52 md:h-auto overflow-hidden bg-secondary/20">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
                 </div>
 
-                {/* Links (shown when expanded) */}
-                {expandedId === project.id && (
-                  <div className="flex flex-wrap gap-2 mb-4">
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1 gap-4">
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-card-foreground">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-foreground/80 mt-1">
+                        {project.tagline}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.slice(0, 3).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Expanded Content */}
+                  {expandedIds.has(project.id) && (
+                    <div className="space-y-3 animate-fade-in">
+                      <div>
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                          Problem
+                        </span>
+                        <p className="text-sm text-foreground/85">{project.problem}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                          What I Built
+                        </span>
+                        <p className="text-sm text-foreground/85">{project.solution}</p>
+                      </div>
+                      <div>
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+                          Outcome
+                        </span>
+                        <p className="text-sm text-foreground/85">{project.outcome}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Links */}
+                  <div className="flex flex-wrap gap-2">
                     {project.githubUrl && (
                       <Button asChild variant="outline" size="sm" className="gap-2">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
@@ -171,28 +176,28 @@ const ProjectsSection = () => {
                       </Button>
                     )}
                   </div>
-                )}
 
-                {/* Expand/Collapse Button */}
-                <div className="mt-auto">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => toggleExpand(project.id)}
-                    className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all w-full justify-center"
-                  >
-                    {expandedId === project.id ? (
-                      <>
-                        <ChevronUp className="h-4 w-4" />
-                        Show Less
-                      </>
-                    ) : (
-                      <>
-                        <ChevronDown className="h-4 w-4" />
-                        Learn More
-                      </>
-                    )}
-                  </Button>
+                  {/* Expand/Collapse Button */}
+                  <div className="pt-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => toggleExpand(project.id)}
+                      className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all"
+                    >
+                      {expandedIds.has(project.id) ? (
+                        <>
+                          <ChevronUp className="h-4 w-4" />
+                          Show Less
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="h-4 w-4" />
+                          Learn More
+                        </>
+                      )}
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
