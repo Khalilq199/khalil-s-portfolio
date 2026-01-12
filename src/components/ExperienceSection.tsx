@@ -131,9 +131,13 @@ const ExperienceSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
           Experience
         </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-4 max-w-2xl mx-auto">
           Impact through Internships and Research
         </p>
+        <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mb-12 max-w-2xl mx-auto">
+          <span>Scroll down for Resume</span>
+          <ChevronDown className="h-4 w-4" />
+        </div>
 
         <div className="space-y-6">
           {experiences.map((exp, index) => (
