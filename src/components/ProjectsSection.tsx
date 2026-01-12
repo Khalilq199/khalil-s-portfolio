@@ -33,7 +33,7 @@ const ProjectsSection = () => {
       id: "proj-1",
       title: "PulseAI - Medical Diagnosis Assistant",
       tagline: "Deep learning system for early disease detection in X-rays",
-      image: "/coming_soon.png",
+      image: "/pulseai.avif",
       problem: "LLMs are unsafe for medical use when relying on internal knowledge due to hallucinations and lack of grounding. Keyword-based search fails to capture semantic meaning in complex medical queries.",
       solution: "Built an end-to-end Retrieval-Augmented Generation (RAG) medical chatbot grounded in textbooks and clinical literature. Implemented a PDF ingestion and chunking pipeline, generated embeddings, and indexed them in Pinecone for semantic retrieval. Developed a Flask API with LangChain-based orchestration and deployed the system using Docker, AWS EC2, and GitHub Actions CI/CD.",
       outcome: "Enabled evidence-grounded medical question answering using semantic retrieval rather than model recall. Delivered a fully deployed, production-style AI system with automated cloud deployment.",
@@ -85,6 +85,7 @@ const ProjectsSection = () => {
       solution: "Built Hercules, an autonomous robot programmed in C/C++ that uses multi-sensor fusion for real-time perception and control. Implemented autonomous navigation, object detection, and a coordinated robotic arm for pick-and-place tasks.",
       outcome: "Delivered a fully autonomous system capable of navigating, classifying objects, and manipulating them without human input. Demonstrated strong fundamentals in embedded C/C++, sensor integration, and real-time robotic control.",
       techStack: ["C", "C++", "Embedded Systems", "Sensor Fusion", "Robotics"],
+      githubUrl: "https://github.com/Khalilq199/Automated-Pick-and-Place-robot---Hercules",
     },
     // ===== DUPLICATE THIS BLOCK TO ADD ANOTHER PROJECT =====
   ];
@@ -107,9 +108,11 @@ const ProjectsSection = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
           Check out some of my Projects!
         </h2>
-        <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mb-12 max-w-2xl mx-auto">
-          <span>Scroll down for Experience</span>
-          <ChevronDown className="h-4 w-4" />
+        <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium mb-12 max-w-2xl mx-auto">
+          <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 shadow-sm">
+            Scroll down for Experience
+          </span>
+          <ChevronDown className="h-4 w-4 animate-bounce" />
         </div>
 
         <div className="space-y-6">
@@ -128,7 +131,7 @@ const ProjectsSection = () => {
               <div className="flex flex-col md:flex-row">
                 {/* Project Image */}
                 <div
-                  className={`relative overflow-hidden bg-secondary/20 ${
+                  className={`relative overflow-hidden rounded-xl border border-border bg-gradient-to-br from-secondary/40 to-secondary/10 p-3 shadow-sm ${
                     project.id === "proj-2" && isExpanded
                       ? "md:w-80 lg:w-96"
                       : project.id === "proj-3" && isExpanded
@@ -141,17 +144,17 @@ const ProjectsSection = () => {
                   }`}
                 >
                   {(project.id === "proj-2" || project.id === "proj-3") && isExpanded ? (
-                    <div className="w-full p-2 space-y-3">
+                    <div className="w-full space-y-3">
                       <img
                         src={project.image}
                         alt={`${project.title} preview`}
-                        className="w-full object-contain"
+                        className="w-full rounded-lg border border-border/60 bg-background/70 object-contain shadow-sm"
                       />
                       {project.id === "proj-2" && (
                         <img
                           src="/ai_voice_assistant_2.png"
                           alt={`${project.title} additional preview`}
-                          className="w-full object-contain"
+                          className="w-full rounded-lg border border-border/60 bg-background/70 object-contain shadow-sm"
                           loading="lazy"
                         />
                       )}
@@ -159,7 +162,7 @@ const ProjectsSection = () => {
                         <img
                           src="/noteanchor_2.png"
                           alt={`${project.title} additional preview`}
-                          className="w-full object-contain"
+                          className="w-full rounded-lg border border-border/60 bg-background/70 object-contain shadow-sm"
                           loading="lazy"
                         />
                       )}
@@ -169,8 +172,8 @@ const ProjectsSection = () => {
                       src={project.image}
                       alt={project.title}
                       className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
-                        isExpanded ? "object-contain" : "object-cover"
-                      }`}
+                        isExpanded ? "object-contain" : "object-contain"
+                      } rounded-lg border border-border/60 bg-background/70 shadow-sm`}
                     />
                   )}
                 </div>
