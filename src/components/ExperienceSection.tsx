@@ -7,6 +7,7 @@ interface Experience {
   title: string;
   company: string;
   dates: string;
+  location: string;
   shortBullets: string[];
   fullBullets: string[];
   techStack: string[];
@@ -28,6 +29,7 @@ const ExperienceSection = () => {
       title: "Computer Vision Research Intern",
       company: "Unity Health Toronto, St. Michael’s Hospital",
       dates: "August 2025 – December 2025",
+      location: "Toronto, ON",
       shortBullets: [
         "Developed ultrasound computer vision models for diaphragm segmentation on ICU patient data",
 "Trained models using COCO-style datasets and prompt-based supervision",
@@ -55,6 +57,7 @@ const ExperienceSection = () => {
       title: "Software Engineer Intern",
       company: "Untether AI",
       dates: "January 2025 – April 2025",
+      location: "Toronto, ON",
       shortBullets: [
         "Built an end-to-end Python ETL pipeline to collect, process, and structure 3000+ AI accelerator test logs",
 "Automated large-scale log ingestion and analysis, eliminating 40+ hours per week of manual data collection",
@@ -77,6 +80,7 @@ const ExperienceSection = () => {
       title: "Software Reliability Engineer Intern",
       company: "IKO North America",
       dates: "April 2024 – August 2024",
+      location: "Brampton, ON",
       shortBullets: [
         "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
 "Designed structured data schemas to organize search and usage data for analysis",
@@ -102,6 +106,7 @@ const ExperienceSection = () => {
       title: "Midnight Sun Firmware team member",
       company: "Midnight Sun",
       dates: "August 2024 – January 2026",
+      location: "Waterloo, ON",
       shortBullets: [
         "Collaborating on STM32 embedded C/C++ firmware development for driver controls and power systems",
 
@@ -149,9 +154,14 @@ const ExperienceSection = () => {
                         </h3>
                         <p className="text-primary font-medium">{exp.company}</p>
                       </div>
-                      <span className="text-sm text-muted-foreground whitespace-nowrap">
-                        {exp.dates}
-                      </span>
+                      <div className="flex flex-col items-start sm:items-end">
+                        <span className="text-sm font-semibold text-primary whitespace-nowrap">
+                          {exp.dates}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {exp.location}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
@@ -215,7 +225,7 @@ const ExperienceSection = () => {
                           setExpandedMedia({
                             src: "/ultrasam.gif",
                             alt: "Ultrasound segmentation preview",
-                            title: "Manual vs Computer Vision Ultrasound Segmentation",
+                            title: "Manual (left) vs Computer Vision (right) Ultrasound Segmentation",
                           })
                         }
                         className="w-full text-left"
@@ -263,6 +273,76 @@ const ExperienceSection = () => {
                           <img
                             src="/untether.jpg"
                             alt="Untether AI engineering preview"
+                            className="w-full max-h-56 object-contain"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <span className="mt-2 block text-xs text-muted-foreground text-center">
+                          <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
+                            Click to expand
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  )}
+
+                  {exp.id === "exp-3" && (
+                    <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-start md:-mt-3">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedMedia({
+                            src: "/iko.jpg",
+                            alt: "IKO North America preview",
+                            title: "IKO North America",
+                          })
+                        }
+                        className="w-full text-left"
+                        aria-label="Expand IKO preview"
+                      >
+                        <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
+                          <div className="px-2 pb-2 text-xs font-semibold text-foreground/80 tracking-wide uppercase text-center">
+                            IKO North America
+                          </div>
+                          <img
+                            src="/iko.jpg"
+                            alt="IKO North America preview"
+                            className="w-full max-h-56 object-contain"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                        <span className="mt-2 block text-xs text-muted-foreground text-center">
+                          <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
+                            Click to expand
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  )}
+
+                  {exp.id === "exp-4" && (
+                    <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-start md:-mt-3">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedMedia({
+                            src: "/midnightsun.webp",
+                            alt: "Midnight Sun preview",
+                            title: "Midnight Sun",
+                          })
+                        }
+                        className="w-full text-left"
+                        aria-label="Expand Midnight Sun preview"
+                      >
+                        <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
+                          <div className="px-2 pb-2 text-xs font-semibold text-foreground/80 tracking-wide uppercase text-center">
+                            Midnight Sun
+                          </div>
+                          <img
+                            src="/midnightsun.webp"
+                            alt="Midnight Sun preview"
                             className="w-full max-h-56 object-contain"
                             loading="lazy"
                             decoding="async"
