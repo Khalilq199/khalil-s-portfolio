@@ -204,6 +204,71 @@ All colors MUST be HSL.
       );
   }
 
+  .cta-pop {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-pop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.18), transparent 55%);
+    opacity: 0;
+    animation: cta-pop-glow 3.6s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .expand-hint {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .expand-hint::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      hsl(var(--primary) / 0.35) 45%,
+      hsl(var(--primary) / 0.1) 60%,
+      transparent 75%
+    );
+    transform: translate(-60%, -60%);
+    opacity: 0;
+    animation: expand-hint-shine 4.8s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes expand-hint-shine {
+    0%,
+    70% {
+      transform: translate(-60%, -60%);
+      opacity: 0;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      transform: translate(60%, 60%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes cta-pop-glow {
+    0%,
+    70% {
+      opacity: 0;
+    }
+    85% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
   .section-gradient {
     background: 
       radial-gradient(ellipse 60% 40% at 10% 50%, hsl(var(--glow-primary) / 0.04) 0%, transparent 50%),

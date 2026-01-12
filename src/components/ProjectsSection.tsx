@@ -98,7 +98,7 @@ const ProjectsSection = () => {
                 <h3 className="text-xl font-semibold text-card-foreground mb-2">
                   {project.title}
                 </h3>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-foreground/80 mb-4">
                   {project.tagline}
                 </p>
 
@@ -109,19 +109,19 @@ const ProjectsSection = () => {
                       <span className="text-xs font-semibold text-primary uppercase tracking-wide">
                         Problem
                       </span>
-                      <p className="text-sm text-muted-foreground">{project.problem}</p>
+                      <p className="text-sm text-foreground/85">{project.problem}</p>
                     </div>
                     <div>
                       <span className="text-xs font-semibold text-primary uppercase tracking-wide">
                         What I Built
                       </span>
-                      <p className="text-sm text-muted-foreground">{project.solution}</p>
+                      <p className="text-sm text-foreground/85">{project.solution}</p>
                     </div>
                     <div>
                       <span className="text-xs font-semibold text-primary uppercase tracking-wide">
                         Outcome
                       </span>
-                      <p className="text-sm text-muted-foreground">{project.outcome}</p>
+                      <p className="text-sm text-foreground/85">{project.outcome}</p>
                     </div>
                   </div>
                 )}
@@ -176,10 +176,10 @@ const ProjectsSection = () => {
                 {/* Expand/Collapse Button */}
                 <div className="mt-auto">
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
                     onClick={() => toggleExpand(project.id)}
-                    className="gap-2 text-muted-foreground hover:text-foreground w-full justify-center"
+                    className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all w-full justify-center"
                   >
                     {expandedId === project.id ? (
                       <>
