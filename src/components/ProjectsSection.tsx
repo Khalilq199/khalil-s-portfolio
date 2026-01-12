@@ -77,10 +77,10 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 section-gradient-alt">
       <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center">
-          Projects
+          Check out some of my Projects!
         </h2>
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-          Featured work showcasing AI, full-stack, and systems engineering
+          Next Section: Experience
         </p>
 
         <div className="space-y-6">

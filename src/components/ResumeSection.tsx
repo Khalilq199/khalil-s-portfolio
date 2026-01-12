@@ -25,10 +25,11 @@ const ResumeSection = () => {
           {/* Resume Preview */}
           <div className="relative">
             <div className="aspect-[8.5/11] bg-secondary/50">
-              <iframe
-                title="Resume preview"
-                src="/resume.pdf#zoom=94"
-                className="h-full w-full"
+              <img
+                src="/resume.jpg"
+                alt="Resume preview"
+                className="h-full w-full object-contain"
+                loading="lazy"
               />
             </div>
 
@@ -81,10 +82,11 @@ const ResumeSection = () => {
               {/* Full resume preview */}
               <div className="p-8">
                 <div className="aspect-[8.5/11] bg-secondary/30 rounded-lg overflow-hidden">
-                  <iframe
-                    title="Resume preview expanded"
-                    src="/resume.pdf#zoom=94"
-                    className="h-full w-full"
+                  <img
+                    src="/resume.jpg"
+                    alt="Resume preview expanded"
+                    className="h-full w-full object-contain"
+                    loading="lazy"
                   />
                 </div>
 

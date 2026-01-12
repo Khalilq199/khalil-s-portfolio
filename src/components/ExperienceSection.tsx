@@ -153,6 +153,16 @@ const ExperienceSection = () => {
                           {exp.title}
                         </h3>
                         <p className="text-primary font-medium">{exp.company}</p>
+                        <div className="flex flex-wrap gap-2 mt-2">
+                          {exp.techStack.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                       <div className="flex flex-col items-start sm:items-end">
                         <span className="text-sm font-semibold text-primary whitespace-nowrap">
@@ -169,7 +179,10 @@ const ExperienceSection = () => {
                   <div className="flex-1">
                     {/* Bullets */}
                     <ul className="space-y-2 mb-4">
-                      {(expandedId === exp.id ? exp.fullBullets : exp.shortBullets).map(
+                      {((exp.id === "exp-4" || expandedId === exp.id)
+                        ? exp.fullBullets
+                        : exp.shortBullets
+                      ).map(
                         (bullet, idx) => (
                           <li
                             key={idx}
@@ -182,20 +195,8 @@ const ExperienceSection = () => {
                       )}
                     </ul>
 
-                    {/* Tech Stack */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {exp.techStack.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-
                     {/* Expand/Collapse Button */}
-                    {exp.fullBullets.length > exp.shortBullets.length && (
+                    {exp.id !== "exp-4" && exp.fullBullets.length > exp.shortBullets.length && (
                       <Button
                         variant="outline"
                         size="sm"

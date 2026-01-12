@@ -241,6 +241,29 @@ All colors MUST be HSL.
     pointer-events: none;
   }
 
+  .nav-pill {
+    position: relative;
+  }
+
+  .nav-pill::before {
+    content: "";
+    position: absolute;
+    inset: -6px -10px;
+    border-radius: 999px;
+    background: radial-gradient(
+      circle at 30% 30%,
+      hsl(var(--primary) / 0.12),
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 200ms ease;
+    z-index: -1;
+  }
+
+  .nav-pill:hover::before {
+    opacity: 1;
+  }
+
   @keyframes expand-hint-shine {
     0%,
     70% {

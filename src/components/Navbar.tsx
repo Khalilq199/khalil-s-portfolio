@@ -74,7 +74,7 @@ const Navbar = () => {
               <button
                 key={item.label}
                 onClick={() => scrollToSection(item.href)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md hover:bg-accent"
+                className="nav-pill px-5 py-2 text-base font-semibold text-foreground/90 hover:text-foreground transition-all rounded-full border border-transparent hover:border-primary/40 hover:bg-accent/70 shadow-sm hover:shadow-md"
               >
                 {item.label}
               </button>
