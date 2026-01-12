@@ -14,6 +14,7 @@ interface Project {
   githubUrl?: string;
   demoUrl?: string;
   substackUrl?: string;
+  substackLabel?: string;
 }
 
 const ProjectsSection = () => {
@@ -37,33 +38,53 @@ const ProjectsSection = () => {
       solution: "Built an end-to-end Retrieval-Augmented Generation (RAG) medical chatbot grounded in textbooks and clinical literature. Implemented a PDF ingestion and chunking pipeline, generated embeddings, and indexed them in Pinecone for semantic retrieval. Developed a Flask API with LangChain-based orchestration and deployed the system using Docker, AWS EC2, and GitHub Actions CI/CD.",
       outcome: "Enabled evidence-grounded medical question answering using semantic retrieval rather than model recall. Delivered a fully deployed, production-style AI system with automated cloud deployment.",
       techStack: ["Python", "LangChain", "Flask", "Pinecone", "Docker", "AWS (EC2, ECR)", "GitHub Actions", "LLMs", "Embedding Models"],
-      githubUrl: "https://github.com/Khalilq199/medical-ai",
-      demoUrl: "https://demo.example.com",
-      substackUrl: "https://substack.com/@khalilqamar/process",
+      githubUrl: "https://github.com/Khalilq199/PulseAI",
+      substackUrl: "https://khalilahmadqamar.substack.com/p/pulseai-medical-rag-chatbot",
+      substackLabel: "Check out my process!",
     },
     {
       id: "proj-2",
-      title: "Real-Time Object Tracker",
-      tagline: "Computer vision system for autonomous drone navigation",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=400&fit=crop",
-      problem: "Drones struggle to track moving objects in complex environments with varying lighting",
-      solution: "Developed a hybrid tracking algorithm combining YOLO detection with Kalman filtering for prediction",
-      outcome: "Achieved 45fps tracking on embedded hardware with 98% object retention rate",
-      techStack: ["Python", "PyTorch", "OpenCV", "C++", "ROS"],
-      githubUrl: "https://github.com/Khalilq199/drone-tracker",
-      demoUrl: "https://youtube.com/watch?v=demo",
+      title: "AI Voice Assistant",
+      tagline: "Real-time multi-user voice receptionist with live AI reasoning",
+      image: "/ai_voice_assistant.png",
+      problem: "Most voice assistants are single-user and limited to scripted interactions. Real-time, multi-user voice systems with live AI reasoning are hard to build and scale.",
+      solution: "Built a real-time AI voice receptionist using Python, Flask, React, SQLite, and LiveKit. Implemented low-latency two-way voice conversations powered by OpenAI GPT models. Designed multi-room session management to support concurrent users and agents. Added secure token-based authentication for LiveKit audio sessions. Built a modular backend with an extensible agent framework and a SQLite-backed data layer for real queries (e.g., vehicle lookups).",
+      outcome: "Delivered a fully functional multi-session voice AI system with reliable real-time performance. Demonstrated an end-to-end architecture combining audio streaming, LLMs, backend services, and persistent data. Created a scalable foundation for future task-specific agents and external API integrations.",
+      techStack: [
+        "Python",
+        "Flask",
+        "React",
+        "SQLite",
+        "LiveKit",
+        "WebRTC",
+        "OpenAI GPT models",
+        "REST APIs",
+        "Git/GitHub",
+      ],
+      githubUrl: "https://github.com/Khalilq199/AI-Voice-Assisstant",
+      demoUrl: "https://www.youtube.com/watch?v=cD3q9o8iKaE&ab_channel=InnovationByKhalil",
     },
     {
       id: "proj-3",
-      title: "HealthSync Platform",
-      tagline: "Full-stack patient management system for clinics",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
-      problem: "Small clinics lack affordable, integrated systems for patient records and scheduling",
-      solution: "Built a cloud-native platform with real-time scheduling, secure records, and analytics dashboard",
-      outcome: "Deployed to 3 clinics serving 2,000+ patients with 99.9% uptime",
-      techStack: ["React", "Node.js", "PostgreSQL", "Redis", "AWS"],
+      title: "NoteAnchor - Secure Notetaking app",
+      tagline: "Secure full-stack note-taking with user authentication",
+      image: "/noteanchor_1.png",
+      problem: "I wanted to build a secure, full-stack web app that handles user data correctly end to end.",
+      solution: "Built NoteAnchor, a secure note-taking web app using Python, Flask, SQLite, and SQLAlchemy. Implemented user registration, login, and session management with password hashing using Flask-Login. Designed full CRUD functionality for personal notes with per-user data isolation. Used SQLAlchemy ORM for structured database models and clean database access. Added form validation, flash messaging, and Jinja2 templating for dynamic, user-aware pages.",
+      outcome: "Delivered a fully functional authentication-based web application with persistent user data. Demonstrated strong fundamentals in backend security, database design, and Flask routing. Built a clean foundation for future extensions such as note encryption, tagging, or cloud deployment.",
+      techStack: ["Python", "Flask", "SQLite", "SQLAlchemy", "Flask-Login", "Jinja2", "HTML/CSS", "Git/GitHub"],
       githubUrl: "https://github.com/Khalilq199/healthsync",
-      substackUrl: "https://substack.com/@khalilqamar/healthsync",
+      demoUrl: "https://demo.example.com",
+    },
+    {
+      id: "proj-4",
+      title: "Hercules - Automated Pick and Place Robot",
+      tagline: "Autonomous robot with multi-sensor perception and control",
+      image: "/Hercules_1.jpg",
+      problem: "Needed a reliable autonomous system for real-time navigation, object classification, and manipulation.",
+      solution: "Built Hercules, an autonomous robot programmed in C/C++ that uses multi-sensor fusion for real-time perception and control. Implemented autonomous navigation, object detection, and a coordinated robotic arm for pick-and-place tasks.",
+      outcome: "Delivered a fully autonomous system capable of navigating, classifying objects, and manipulating them without human input. Demonstrated strong fundamentals in embedded C/C++, sensor integration, and real-time robotic control.",
+      techStack: ["C", "C++", "Embedded Systems", "Sensor Fusion", "Robotics"],
     },
     // ===== DUPLICATE THIS BLOCK TO ADD ANOTHER PROJECT =====
   ];
@@ -108,18 +129,50 @@ const ProjectsSection = () => {
                 {/* Project Image */}
                 <div
                   className={`relative overflow-hidden bg-secondary/20 ${
-                    isExpanded
-                      ? "md:w-80 lg:w-96 h-56 md:h-60 lg:h-72"
-                      : "md:w-72 lg:w-80 h-52 md:h-52 lg:h-60"
+                    project.id === "proj-2" && isExpanded
+                      ? "md:w-80 lg:w-96"
+                      : project.id === "proj-3" && isExpanded
+                        ? "md:w-80 lg:w-96"
+                        : project.id === "proj-4" && isExpanded
+                          ? "md:w-80 lg:w-96"
+                      : isExpanded
+                        ? "md:w-80 lg:w-96 h-56 md:h-60 lg:h-72"
+                        : "md:w-72 lg:w-80 h-52 md:h-52 lg:h-60"
                   }`}
                 >
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
-                      isExpanded ? "object-contain" : "object-cover"
-                    }`}
-                  />
+                  {(project.id === "proj-2" || project.id === "proj-3") && isExpanded ? (
+                    <div className="w-full p-2 space-y-3">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        className="w-full object-contain"
+                      />
+                      {project.id === "proj-2" && (
+                        <img
+                          src="/ai_voice_assistant_2.png"
+                          alt={`${project.title} additional preview`}
+                          className="w-full object-contain"
+                          loading="lazy"
+                        />
+                      )}
+                      {project.id === "proj-3" && (
+                        <img
+                          src="/noteanchor_2.png"
+                          alt={`${project.title} additional preview`}
+                          className="w-full object-contain"
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className={`w-full h-full transition-transform duration-500 hover:scale-105 ${
+                        isExpanded ? "object-contain" : "object-cover"
+                      }`}
+                    />
+                  )}
                 </div>
 
                 {/* Content */}
@@ -131,7 +184,7 @@ const ProjectsSection = () => {
                       </h3>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {project.techStack.slice(0, 3).map((tech) => (
+                      {project.techStack.map((tech) => (
                         <span
                           key={tech}
                           className="px-2.5 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full"
@@ -191,7 +244,7 @@ const ProjectsSection = () => {
                   {/* Links */}
                   <div className="flex flex-wrap gap-2">
                     {project.githubUrl && (
-                      <Button asChild variant="outline" size="sm" className="gap-2">
+                      <Button asChild variant="outline" size="sm" className="gap-2 shine-link">
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
                           <Github className="h-4 w-4" />
                           Code
@@ -199,7 +252,7 @@ const ProjectsSection = () => {
                       </Button>
                     )}
                     {project.demoUrl && (
-                      <Button asChild variant="outline" size="sm" className="gap-2">
+                      <Button asChild variant="outline" size="sm" className="gap-2 shine-link">
                         <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="h-4 w-4" />
                           Demo
@@ -207,10 +260,10 @@ const ProjectsSection = () => {
                       </Button>
                     )}
                     {project.substackUrl && (
-                      <Button asChild variant="outline" size="sm" className="gap-2">
+                      <Button asChild variant="outline" size="sm" className="gap-2 shine-link">
                         <a href={project.substackUrl} target="_blank" rel="noopener noreferrer">
                           <FileText className="h-4 w-4" />
-                          My Process
+                          {project.substackLabel ?? "My Process"}
                         </a>
                       </Button>
                     )}
@@ -222,7 +275,7 @@ const ProjectsSection = () => {
                       variant="outline"
                       size="sm"
                       onClick={() => toggleExpand(project.id)}
-                      className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all"
+                      className="cta-pop shine-link gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all"
                     >
                     {isExpanded ? (
                       <>
