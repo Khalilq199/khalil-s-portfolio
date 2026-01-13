@@ -17,8 +17,8 @@ interface Experience {
 const ExperienceSection = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [expandedMedia, setExpandedMedia] = useState<{
-    src: string;
-    alt: string;
+    srcs: string[];
+    alts: string[];
     title: string;
   } | null>(null);
 
@@ -31,24 +31,16 @@ const ExperienceSection = () => {
       dates: "August 2025 – December 2025",
       location: "Toronto, ON",
       shortBullets: [
-        "Developed ultrasound computer vision models for diaphragm segmentation on ICU patient data",
-"Trained models using COCO-style datasets and prompt-based supervision",
-"Reduced manual annotation and analysis time by over 100 hours per week",
+        "Fine-tuned an ultrasound foundation model (UltraSam) for ICU diaphragm segmentation by curating COCO datasets with masks, implementing prompt-encoding, and inference, improving model segmentation performance by 70%.",
+        "Improved prompt-based ultrasound segmentation by generating point and box prompts via Ground Truth clinician masks over raw frames using Python, OpenCV, NumPy, and Pandas, measured via IoU, Dice, and mAP metrics.",
+        "Built scalable inference and evaluation pipelines in Pytorch/MMDetection/MMEngine by creating dynamic JSON COCO-style annotation workflows, reducing model evaluation time by over 15 hours/week.",
       ],
       fullBullets: [
-        "Developed ultrasound computer vision models for diaphragm segmentation on ICU patient data",
-"Trained models using COCO-style datasets and prompt-based supervision",
-"Reduced manual annotation and analysis time by over 100 hours per week",
-
-"Built end-to-end data annotation and mask conversion pipelines in Python using PyTorch and OpenCV, transforming raw B-mode ultrasound frames into bounding-box prompts for supervised fine-tuning",
-
-"Implemented a full prompt-conditioned inference and evaluation workflow with MMDetection and MMEngine, benchmarking segmentation performance using IoU, Dice score, and mAP across validation datasets",
-
-"Created NumPy, Pandas, and Matplotlib utilities to enhance ultrasound B-mode image quality and support large-scale training data exploration and analysis",
-
-"Designed scalable AI-assisted ultrasound analysis pipelines to support future clinical research and translational imaging workflows within the lab"
-
-
+        "Fine-tuned an ultrasound foundation model (UltraSam) for ICU diaphragm segmentation by curating COCO datasets with masks, implementing prompt-encoding, and inference, improving model segmentation performance by 70%.",
+        "Improved prompt-based ultrasound segmentation by generating point and box prompts via Ground Truth clinician masks over raw frames using Python, OpenCV, NumPy, and Pandas, measured via IoU, Dice, and mAP metrics.",
+        "Built scalable inference and evaluation pipelines in Pytorch/MMDetection/MMEngine by creating dynamic JSON COCO-style annotation workflows, reducing model evaluation time by over 15 hours/week.",
+        "Created NumPy/Pandas/Matplotlib utilities to enhance frame image quality from RF/ENV signals and display on a GUI.",
+        "Accelerated the lab’s shift toward scalable AI-assisted ultrasound analysis for future clinical research workflows.",
       ],
       techStack: ["Python", "MMEngine", "OpenCV", "NumPy", "PyTorch","Git", 'Pandas', 'Matplotlib', "YAML",],
     },
@@ -83,40 +75,37 @@ const ExperienceSection = () => {
       location: "Brampton, ON",
       shortBullets: [
         "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
-"Designed structured data schemas to organize search and usage data for analysis",
-"Generated usage and performance analytics to better understand user behavior",
-"Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants"
+        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants"
 
 
       ],
       fullBullets: [
         "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
-"Designed structured data schemas to organize search and usage data for analysis",
-"Generated usage and performance analytics to better understand user behavior",
-"Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants",
-"Developed and deployed new search engine features with JavaScript, Node.js, and Git, streamlining standardization workflows and reducing completion time by 30%.",
-"Built automation functions in Outlook VBA to auto-fill spare parts requests and route emails, improving communication efficiency by 30%.",
-"Worked cross-functionally with reliability engineers, plant engineers, and inventory coordinators to enhance data visibility, minimize manual errors, and improve end-to-end workflow reliability.",
+        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants",
+        "Developed and deployed new search engine features with JavaScript, Node.js, and Git, streamlining standardization workflows and reducing completion time by 30%.",
+        "Built automation functions in Outlook VBA to auto-fill spare parts requests and route emails, improving communication efficiency by 30%.",
+        "Worked cross-functionally with reliability engineers, plant engineers, and inventory coordinators to enhance data visibility, minimize manual errors, and improve end-to-end workflow reliability.",
       ],
       techStack: ["BigQuery", "SQL", "Node.js", "Javascript", "VBA", "Git", "Looker Studio"],
     },
 
     {
       id: "exp-4",
-      title: "Midnight Sun Firmware team member",
-      company: "Midnight Sun",
-      dates: "August 2024 – January 2026",
+      title: "Geospatial AI Research Assistant",
+      company: "University of Waterloo - Vision and Image Processing Lab",
+      dates: "January 2026 - Present",
       location: "Waterloo, ON",
       shortBullets: [
-        "Collaborating on STM32 embedded C/C++ firmware development for driver controls and power systems",
-
-
+        "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
+        "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
+        "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
       ],
       fullBullets: [
-        "Collaborating on STM32 embedded C/C++ firmware development for driver controls and power systems",
-"Designed power balancing algorithms for battery efficiency and performance using I2C, SPI, and UART protocols",
+        "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
+        "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
+        "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
       ],
-      techStack: ["C++", "C", "Linux", "STM32"],
+      techStack: ["Python", "Google Earth Engine", "Remote Sensing", "Embeddings", "Clustering"],
     },
     // ===== ADD NEW EXPERIENCE CARD ABOVE THIS LINE =====
   ];
@@ -183,10 +172,7 @@ const ExperienceSection = () => {
                   <div className="flex-1">
                     {/* Bullets */}
                     <ul className="space-y-2 mb-4">
-                      {((exp.id === "exp-4" || expandedId === exp.id)
-                        ? exp.fullBullets
-                        : exp.shortBullets
-                      ).map(
+                      {(expandedId === exp.id ? exp.fullBullets : exp.shortBullets).map(
                         (bullet, idx) => (
                           <li
                             key={idx}
@@ -200,7 +186,7 @@ const ExperienceSection = () => {
                     </ul>
 
                     {/* Expand/Collapse Button */}
-                    {exp.id !== "exp-4" && exp.fullBullets.length > exp.shortBullets.length && (
+                    {exp.fullBullets.length > exp.shortBullets.length && (
                       <Button
                         variant="outline"
                         size="sm"
@@ -228,8 +214,8 @@ const ExperienceSection = () => {
                         type="button"
                         onClick={() =>
                           setExpandedMedia({
-                            src: "/ultrasam.gif",
-                            alt: "Ultrasound segmentation preview",
+                            srcs: ["/ultrasam.gif"],
+                            alts: ["Ultrasound segmentation preview"],
                             title: "Manual (left) vs Computer Vision (right) Ultrasound Segmentation",
                           })
                         }
@@ -263,8 +249,8 @@ const ExperienceSection = () => {
                         type="button"
                         onClick={() =>
                           setExpandedMedia({
-                            src: "/untether.jpg",
-                            alt: "Untether AI engineering preview",
+                            srcs: ["/untether.jpg"],
+                            alts: ["Untether AI engineering preview"],
                             title: "Untether AI chip",
                           })
                         }
@@ -298,8 +284,8 @@ const ExperienceSection = () => {
                         type="button"
                         onClick={() =>
                           setExpandedMedia({
-                            src: "/iko.jpg",
-                            alt: "IKO North America preview",
+                            srcs: ["/iko.jpg"],
+                            alts: ["IKO North America preview"],
                             title: "IKO North America",
                           })
                         }
@@ -327,40 +313,52 @@ const ExperienceSection = () => {
                     </div>
                   )}
 
-                  {exp.id === "exp-4" && (
-                    <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-start md:-mt-3">
-                      <button
-                        type="button"
-                        onClick={() =>
+                    {exp.id === "exp-4" && (
+                      <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-start md:-mt-3">
+                        <button
+                          type="button"
+                          onClick={() =>
                           setExpandedMedia({
-                            src: "/midnightsun.webp",
-                            alt: "Midnight Sun preview",
-                            title: "Midnight Sun",
+                            srcs: ["/vip.jpg", "/vip2.webp"],
+                            alts: [
+                              "Vision and Image Processing Lab preview 1",
+                              "Vision and Image Processing Lab preview 2",
+                            ],
+                            title: "Vision and Image Processing Lab",
                           })
-                        }
-                        className="w-full text-left"
-                        aria-label="Expand Midnight Sun preview"
-                      >
-                        <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
-                          <div className="px-2 pb-2 text-xs font-semibold text-foreground/80 tracking-wide uppercase text-center">
-                            Midnight Sun
+                          }
+                          className="w-full text-left"
+                          aria-label="Expand VIP Lab preview"
+                        >
+                          <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
+                            <div className="px-2 pb-2 text-xs font-semibold text-foreground/80 tracking-wide uppercase text-center">
+                              Vision and Image Processing Lab
+                            </div>
+                            <div className="space-y-3">
+                              <img
+                                src="/vip.jpg"
+                                alt="Vision and Image Processing Lab preview 1"
+                                className="w-full max-h-48 object-contain"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                              <img
+                                src="/vip2.webp"
+                                alt="Vision and Image Processing Lab preview 2"
+                                className="w-full max-h-48 object-contain"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
                           </div>
-                          <img
-                            src="/midnightsun.webp"
-                            alt="Midnight Sun preview"
-                            className="w-full max-h-56 object-contain"
-                            loading="lazy"
-                            decoding="async"
-                          />
-                        </div>
-                        <span className="mt-2 block text-xs text-muted-foreground text-center">
-                          <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
-                            Click to expand
+                          <span className="mt-2 block text-xs text-muted-foreground text-center">
+                            <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
+                              Click to expand
+                            </span>
                           </span>
-                        </span>
-                      </button>
-                    </div>
-                  )}
+                        </button>
+                      </div>
+                    )}
                 </div>
               </div>
             </div>
@@ -380,11 +378,16 @@ const ExperienceSection = () => {
             <div className="px-4 pt-2 pb-3 text-sm font-semibold text-foreground/80 tracking-wide uppercase text-center">
               {expandedMedia.title}
             </div>
-            <img
-              src={expandedMedia.src}
-              alt={expandedMedia.alt}
-              className="w-full max-h-[85vh] object-contain rounded-md"
-            />
+            <div className="space-y-4">
+              {expandedMedia.srcs.map((src, idx) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={expandedMedia.alts[idx] ?? expandedMedia.title}
+                  className="w-full max-h-[85vh] object-contain rounded-md"
+                />
+              ))}
+            </div>
           </div>
         </div>
       )}
