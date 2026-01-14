@@ -92,7 +92,7 @@ const ExperienceSection = () => {
     {
       id: "exp-4",
       title: "Geospatial AI Research Assistant",
-      company: "University of Waterloo - Vision and Image Processing Lab",
+      company: "Vision and Image Processing Lab",
       dates: "January 2026 - Present",
       location: "Waterloo, ON",
       shortBullets: [
@@ -317,48 +317,62 @@ const ExperienceSection = () => {
 
                     {exp.id === "exp-4" && (
                       <div className="w-full md:w-72 lg:w-80 flex-shrink-0 self-start md:-mt-3">
-                        <button
-                          type="button"
-                          onClick={() =>
-                          setExpandedMedia({
-                            srcs: ["/vip.jpg", "/vip2.webp"],
-                            alts: [
-                              "Vision and Image Processing Lab preview 1",
-                              "Vision and Image Processing Lab preview 2",
-                            ],
-                            title: "Vision and Image Processing Lab",
-                          })
-                          }
-                          className="w-full text-left"
-                          aria-label="Expand VIP Lab preview"
-                        >
-                          <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
-                            <div className="px-2 pb-2 text-xs font-semibold text-foreground/80 tracking-wide uppercase text-center">
-                              Vision and Image Processing Lab
-                            </div>
-                            <div className="space-y-3">
-                              <img
-                                src="/vip.jpg"
-                                alt="Vision and Image Processing Lab preview 1"
-                                className="w-full max-h-48 object-contain"
-                                loading="lazy"
-                                decoding="async"
-                              />
-                              <img
-                                src="/vip2.webp"
-                                alt="Vision and Image Processing Lab preview 2"
+                        <div className="grid gap-3">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setExpandedMedia({
+                                srcs: ["/vip.jpg"],
+                                alts: ["Vision and Image Processing Lab preview 1"],
+                                title: "Vision and Image Processing Lab",
+                              })
+                            }
+                            className="w-full text-left"
+                            aria-label="Expand VIP Lab preview 1"
+                          >
+                            <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
+                            <img
+                              src="/vip.jpg"
+                              alt="Vision and Image Processing Lab preview 1"
                                 className="w-full max-h-48 object-contain"
                                 loading="lazy"
                                 decoding="async"
                               />
                             </div>
-                          </div>
-                          <span className="mt-2 block text-xs text-muted-foreground text-center">
-                            <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
-                              Click to expand
+                            <span className="mt-2 block text-xs text-muted-foreground text-center">
+                              <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
+                                Click to expand
+                              </span>
                             </span>
-                          </span>
-                        </button>
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setExpandedMedia({
+                                srcs: ["/vip2.webp"],
+                                alts: ["Vision and Image Processing Lab preview 2"],
+                                title: "Vision and Image Processing Lab",
+                              })
+                            }
+                            className="w-full text-left"
+                            aria-label="Expand VIP Lab preview 2"
+                          >
+                            <div className="w-full rounded-lg border border-border bg-secondary/20 shadow-sm px-1.5 py-2">
+                            <img
+                              src="/vip2.webp"
+                              alt="Vision and Image Processing Lab preview 2"
+                                className="w-full max-h-48 object-contain"
+                                loading="lazy"
+                                decoding="async"
+                              />
+                            </div>
+                            <span className="mt-2 block text-xs text-muted-foreground text-center">
+                              <span className="expand-hint inline-flex items-center gap-1 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-primary shadow-sm">
+                                Click to expand
+                              </span>
+                            </span>
+                          </button>
+                        </div>
                       </div>
                     )}
                 </div>
