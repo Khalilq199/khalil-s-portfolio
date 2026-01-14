@@ -99,11 +99,13 @@ const ExperienceSection = () => {
         "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
         "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
         "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
+        "Evaluating LLM-based customer interaction systems using LangChain agents and constrained MCP servers."
       ],
       fullBullets: [
         "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
         "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
         "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
+        "Evaluating LLM-based customer interaction systems using LangChain agents and constrained MCP servers."
       ],
       techStack: ["Python", "Google Earth Engine", "Remote Sensing", "Embeddings", "Clustering"],
     },

@@ -73,8 +73,8 @@ const ProjectsSection = () => {
       solution: "Built NoteAnchor, a secure note-taking web app using Python, Flask, SQLite, and SQLAlchemy. Implemented user registration, login, and session management with password hashing using Flask-Login. Designed full CRUD functionality for personal notes with per-user data isolation. Used SQLAlchemy ORM for structured database models and clean database access. Added form validation, flash messaging, and Jinja2 templating for dynamic, user-aware pages.",
       outcome: "Delivered a fully functional authentication-based web application with persistent user data. Demonstrated strong fundamentals in backend security, database design, and Flask routing. Built a clean foundation for future extensions such as note encryption, tagging, or cloud deployment.",
       techStack: ["Python", "Flask", "SQLite", "SQLAlchemy", "Flask-Login", "Jinja2", "HTML/CSS", "Git/GitHub"],
-      githubUrl: "https://github.com/Khalilq199/healthsync",
-      demoUrl: "https://demo.example.com",
+      githubUrl: "https://github.com/Khalilq199/NoteAnchor",
+      demoUrl: "https://www.youtube.com/watch?v=ggebMio51bU&ab_channel=InnovationByKhalil",
     },
     {
       id: "proj-4",
