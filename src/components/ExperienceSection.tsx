@@ -53,7 +53,8 @@ const ExperienceSection = () => {
       shortBullets: [
         "Built an end-to-end Python ETL pipeline to collect, process, and structure 3000+ AI accelerator test logs",
 "Automated large-scale log ingestion and analysis, eliminating 40+ hours per week of manual data collection",
-"Drove performance and yield analytics across 200+ tests while keeping compatibility with 10+ legacy log formats"
+"Drove performance and yield analytics across 200+ tests while keeping compatibility with 10+ legacy log formats",
+"Implemented automated log parsing and metric computation workflows using Pandas, NumPy, and Matplotlib, delivered through an interactive analysis GUI"
 
       ],
       fullBullets: [
@@ -75,7 +76,9 @@ const ExperienceSection = () => {
       location: "Brampton, ON",
       shortBullets: [
         "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
-        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants"
+        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants",
+        "Developed and deployed new search engine features with JavaScript, Node.js, and Git, streamlining standardization workflows and reducing completion time by 30%.",
+        "Built automation functions in Outlook VBA to auto-fill spare parts requests and route emails, improving communication efficiency by 30%."
 
 
       ],
