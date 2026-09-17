@@ -110,13 +110,13 @@ const ProjectsSection = () => {
         </h2>
         <div className="flex items-center justify-center gap-2 text-primary text-sm font-medium mb-12 max-w-2xl mx-auto">
           <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 shadow-sm">
-            Scroll down for Experience
+            Scroll down for Resume
           </span>
           <ChevronDown className="h-4 w-4 animate-bounce" />
         </div>
 
         <div className="space-y-6">
-          {projects.map((project, index) => {
+          {projects.filter((project) => project.id === "proj-1" || project.id === "proj-2").map((project, index) => {
             const isExpanded = expandedIds.has(project.id);
             return (
             <div

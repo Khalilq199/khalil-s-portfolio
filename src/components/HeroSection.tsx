@@ -2,18 +2,17 @@ import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, Github, Phone, MapPin, GraduationCap, ChevronDown, FileText, Copy, Check } from "lucide-react";
 import { useState } from "react";
 import profilePhoto from "@/assets/profile_pic.jpg";
+import { copyToClipboard } from "@/lib/copy-to-clipboard";
 
 const HeroSection = () => {
   const [isCopied, setIsCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText("kaqamar@uwaterloo.ca");
-      setIsCopied(true);
-      window.setTimeout(() => setIsCopied(false), 1500);
-    } catch {
-      setIsCopied(false);
-    }
+    const copied = await copyToClipboard("kaqamar@uwaterloo.ca");
+    setIsCopied(copied);
+    setCopyFailed(!copied);
+    if (copied) window.setTimeout(() => setIsCopied(false), 1500);
   };
 
   const scrollToSection = (id: string) => {
@@ -79,22 +78,21 @@ const HeroSection = () => {
               onClick={handleCopyEmail}
               className="flex items-center gap-2 px-4 py-2 text-sm text-foreground bg-card/70 border border-border rounded-full shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
               aria-live="polite"
-              aria-label="Copy email address"
+              aria-label={isCopied ? "Email copied" : copyFailed ? "Email copy failed; try again" : "Copy email address"}
               title="Click to copy email"
             >
               <Copy className="h-4 w-4 text-muted-foreground" />
               <span className="hidden sm:inline text-muted-foreground border border-muted-foreground/60 rounded-full px-2 py-0.5 leading-none">
-                {isCopied ? "Copied" : "Copy"}
+                {isCopied ? "Copied" : copyFailed ? "Copy failed" : "Copy"}
               </span>
               <Mail className="h-4 w-4" />
               <span className="hidden sm:inline">
                 {isCopied ? "Copied!" : "kaqamar@uwaterloo.ca"}
               </span>
-              <span className="sm:hidden">{isCopied ? "Copied!" : "Email"}</span>
-              <span className="sr-only">{isCopied ? "Email copied" : "Click to copy email"}</span>
+              <span className="sm:hidden">{isCopied ? "Copied!" : copyFailed ? "Copy failed" : "Email"}</span>
             </button>
             <a
-              href="https://www.linkedin.com/in/khalil-ahmad-qamar/"
+              href="https://www.linkedin.com/in/kaq05/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-4 py-2 text-sm text-foreground bg-card/70 border border-border rounded-full shadow-sm hover:shadow-md hover:border-primary/40 transition-all"
@@ -156,7 +154,7 @@ const HeroSection = () => {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <button
-          onClick={() => scrollToSection("experience-strip")}
+          onClick={() => scrollToSection("experience")}
           className="scroll-cta flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-primary hover:bg-primary/20 transition-all"
           aria-label="Scroll to next section"
         >

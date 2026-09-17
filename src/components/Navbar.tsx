@@ -26,9 +26,8 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { label: "Projects", href: "#projects" },
     { label: "Experience", href: "#experience" },
-    { label: "Skills", href: "#skills" },
+    { label: "Projects", href: "#projects" },
     { label: "Resume", href: "#resume" },
     { label: "Contact", href: "#contact" },
   ];

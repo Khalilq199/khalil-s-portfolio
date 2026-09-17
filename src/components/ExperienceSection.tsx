@@ -1,18 +1,7 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-interface Experience {
-  id: string;
-  title: string;
-  company: string;
-  dates: string;
-  location: string;
-  shortBullets: string[];
-  fullBullets: string[];
-  techStack: string[];
-  logo?: string;
-}
+import { experiences } from "@/data/experience";
 
 const ExperienceSection = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -21,99 +10,6 @@ const ExperienceSection = () => {
     alts: string[];
     title: string;
   } | null>(null);
-
-  // ===== ADD NEW EXPERIENCES HERE (Most recent first) =====
-  const experiences: Experience[] = [
-    {
-      id: "exp-1",
-      title: "Computer Vision Research Intern",
-      company: "Unity Health Toronto, St. Michael’s Hospital",
-      dates: "August 2025 – December 2025",
-      location: "Toronto, ON",
-      shortBullets: [
-        "Fine-tuned an ultrasound foundation model (UltraSam) for ICU diaphragm segmentation by curating COCO datasets with masks, implementing prompt-encoding, and inference, improving model segmentation performance by 70%.",
-        "Improved prompt-based ultrasound segmentation by generating point and box prompts via Ground Truth clinician masks over raw frames using Python, OpenCV, NumPy, and Pandas, measured via IoU, Dice, and mAP metrics.",
-        "Built scalable inference and evaluation pipelines in Pytorch/MMDetection/MMEngine by creating dynamic JSON COCO-style annotation workflows, reducing model evaluation time by over 15 hours/week.",
-      ],
-      fullBullets: [
-        "Fine-tuned an ultrasound foundation model (UltraSam) for ICU diaphragm segmentation by curating COCO datasets with masks, implementing prompt-encoding, and inference, improving model segmentation performance by 70%.",
-        "Improved prompt-based ultrasound segmentation by generating point and box prompts via Ground Truth clinician masks over raw frames using Python, OpenCV, NumPy, and Pandas, measured via IoU, Dice, and mAP metrics.",
-        "Built scalable inference and evaluation pipelines in Pytorch/MMDetection/MMEngine by creating dynamic JSON COCO-style annotation workflows, reducing model evaluation time by over 15 hours/week.",
-        "Created NumPy/Pandas/Matplotlib utilities to enhance frame image quality from RF/ENV signals and display on a GUI.",
-        "Accelerated the lab’s shift toward scalable AI-assisted ultrasound analysis for future clinical research workflows.",
-      ],
-      techStack: ["Python", "MMEngine", "OpenCV", "NumPy", "PyTorch","Git", 'Pandas', 'Matplotlib', "YAML",],
-    },
-    {
-      id: "exp-2",
-      title: "Software Engineer Intern",
-      company: "Untether AI",
-      dates: "January 2025 – April 2025",
-      location: "Toronto, ON",
-      shortBullets: [
-        "Built an end-to-end Python ETL pipeline to collect, process, and structure 3000+ AI accelerator test logs",
-"Automated large-scale log ingestion and analysis, eliminating 40+ hours per week of manual data collection",
-"Drove performance and yield analytics across 200+ tests while keeping compatibility with 10+ legacy log formats",
-"Implemented automated log parsing and metric computation workflows using Pandas, NumPy, and Matplotlib, delivered through an interactive analysis GUI"
-
-      ],
-      fullBullets: [
-        "Built an end-to-end Python ETL pipeline to collect, process, and structure 3000+ AI accelerator test logs",
-"Automated large-scale log ingestion and analysis, eliminating 40+ hours per week of manual data collection",
-"Drove performance and yield analytics across 200+ tests while keeping compatibility with 10+ legacy log formats",
-"Automated retrieval, processing, and synchronization of 2,000+ firmware log files using Linux SCP and SFTP protocols",
-"Implemented automated log parsing and metric computation workflows using Pandas, NumPy, and Matplotlib, delivered through an interactive analysis GUI",
-"Developed a reusable XML schema library covering 100+ chip tests to enable dynamic validation and significantly reduce data corruption"
-
-      ],
-      techStack: ["Python", "Numpy", "Pandas", "Git", "XML", "Matplotlib", "Linux"],
-    },
-    {
-      id: "exp-3",
-      title: "Software Reliability Engineer Intern",
-      company: "IKO North America",
-      dates: "April 2024 – August 2024",
-      location: "Brampton, ON",
-      shortBullets: [
-        "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
-        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants",
-        "Developed and deployed new search engine features with JavaScript, Node.js, and Git, streamlining standardization workflows and reducing completion time by 30%.",
-        "Built automation functions in Outlook VBA to auto-fill spare parts requests and route emails, improving communication efficiency by 30%."
-
-
-      ],
-      fullBullets: [
-        "Queried internal search engine data using SQL and Google BigQuery across thousands of spare parts",
-        "Built Looker Studio dashboards that improved request turnaround time by 25% and drove adoption at  plants",
-        "Developed and deployed new search engine features with JavaScript, Node.js, and Git, streamlining standardization workflows and reducing completion time by 30%.",
-        "Built automation functions in Outlook VBA to auto-fill spare parts requests and route emails, improving communication efficiency by 30%.",
-        "Worked cross-functionally with reliability engineers, plant engineers, and inventory coordinators to enhance data visibility, minimize manual errors, and improve end-to-end workflow reliability.",
-      ],
-      techStack: ["BigQuery", "SQL", "Node.js", "Javascript", "VBA", "Git", "Looker Studio"],
-    },
-
-    {
-      id: "exp-4",
-      title: "Geospatial AI Research Assistant",
-      company: "Vision and Image Processing Lab",
-      dates: "January 2026 - Present",
-      location: "Waterloo, ON",
-      shortBullets: [
-        "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
-        "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
-        "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
-        "Evaluating LLM-based customer interaction systems using LangChain agents and constrained MCP servers."
-      ],
-      fullBullets: [
-        "Analyzing foundation-model embeddings for satellite imagery in large-scale remote sensing datasets.",
-        "Using Alpha Earth Foundations and the Google Earth Engine Python API for geospatial data querying and visualization.",
-        "Evaluating 64-dimensional embedding vectors via similarity analysis and clustering across geographic regions.",
-        "Evaluating LLM-based customer interaction systems using LangChain agents and constrained MCP servers."
-      ],
-      techStack: ["Python", "Google Earth Engine", "Remote Sensing", "Embeddings", "Clustering"],
-    },
-    // ===== ADD NEW EXPERIENCE CARD ABOVE THIS LINE =====
-  ];
 
   const toggleExpand = (id: string) => {
     setExpandedId(expandedId === id ? null : id);
@@ -129,14 +25,19 @@ const ExperienceSection = () => {
           Impact through Internships and Research
         </p>
         <div className="flex items-center justify-center gap-2 text-muted-foreground text-sm mb-12 max-w-2xl mx-auto">
-          <span>Scroll down for Resume</span>
+          <span>Scroll down for Projects</span>
           <ChevronDown className="h-4 w-4" />
         </div>
 
         <div className="space-y-6">
           {experiences.map((exp, index) => (
+            <Fragment key={exp.id}>
+            {(index === 0 || exp.group !== experiences[index - 1].group) && (
+              <h3 className="pt-4 text-xl font-semibold text-foreground">
+                {exp.group === "professional" ? "Professional Experience" : "Teams & Research"}
+              </h3>
+            )}
             <div
-              key={exp.id}
               className="bg-card border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               style={{
                 animationDelay: `${index * 100}ms`,
@@ -166,9 +67,11 @@ const ExperienceSection = () => {
                         <span className="text-sm font-semibold text-primary whitespace-nowrap">
                           {exp.dates}
                         </span>
-                        <span className="text-xs text-muted-foreground">
-                          {exp.location}
-                        </span>
+                        {exp.location && (
+                          <span className="text-xs text-muted-foreground">
+                            {exp.location}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -177,7 +80,7 @@ const ExperienceSection = () => {
                   <div className="flex-1">
                     {/* Bullets */}
                     <ul className="space-y-2 mb-4">
-                      {(expandedId === exp.id ? exp.fullBullets : exp.shortBullets).map(
+                      {exp.collapsedBullets.map(
                         (bullet, idx) => (
                           <li
                             key={idx}
@@ -188,14 +91,26 @@ const ExperienceSection = () => {
                           </li>
                         )
                       )}
+                      {expandedId === exp.id && exp.expandedBullets.map(
+                        (bullet, idx) => (
+                          <li
+                            key={`expanded-${idx}`}
+                            className="text-foreground/90 text-sm flex items-start gap-2"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                            {bullet}
+                          </li>
+                        )
+                      )}
                     </ul>
 
                     {/* Expand/Collapse Button */}
-                    {exp.fullBullets.length > exp.shortBullets.length && (
+                    {exp.expandedBullets.length > 0 && (
                       <Button
                         variant="outline"
                         size="sm"
                         onClick={() => toggleExpand(exp.id)}
+                        aria-expanded={expandedId === exp.id}
                         className="cta-pop gap-2 text-primary border-primary/40 hover:border-primary hover:text-primary shadow-sm hover:shadow-md transition-all"
                       >
                         {expandedId === exp.id ? (
@@ -381,6 +296,7 @@ const ExperienceSection = () => {
                 </div>
               </div>
             </div>
+            </Fragment>
           ))}
         </div>
       </div>
