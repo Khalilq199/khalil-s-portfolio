@@ -5,13 +5,15 @@ import ExperienceSection from "@/components/ExperienceSection";
 import ResumeSection from "@/components/ResumeSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ExperienceStrip from "@/components/ExperienceStrip";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="phase-site min-h-screen bg-background">
       <Navbar />
       <main>
         <HeroSection />
+        <ExperienceStrip />
         <ExperienceSection />
         <ProjectsSection />
         <ResumeSection />
